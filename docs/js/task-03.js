@@ -15,26 +15,14 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 
-const galleryItems = images.map((image) => {
-  const li = document.createElement("li");
-  li.classList.add("gallery-item");
-  li.style.margin = "10px";
-
-  const img = document.createElement("img");
-  img.src = image.url;
-  img.alt = image.alt;
-  img.classList.add("gallery-image");
-  img.style.maxWidth = "100%";
-  img.style.height = "auto";
-
-  li.appendChild(img);
-  return li;
-});
+const galleryItemsHTML = images.map((image) => `
+  <li class="gallery-item" style="margin: 10px;">
+    <img src="${image.url}" alt="${image.alt}" class="gallery-image" style="max-width: 100%; height: auto;">
+  </li>
+`).join('');
 
 gallery.style.display = "flex";
 gallery.style.listStyle = "none";
 gallery.style.padding = "0";
 
-galleryItems.forEach((item) => {
-  gallery.appendChild(item);
-});
+gallery.insertAdjacentHTML('beforeend', galleryItemsHTML);

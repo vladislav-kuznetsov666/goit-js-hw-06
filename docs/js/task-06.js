@@ -5,8 +5,10 @@ validationInput.addEventListener("blur", () => {
   const dataLength = parseInt(validationInput.getAttribute("data-length"));
 
   if (inputValue.length === dataLength) {
-    validationInput.style.border = "2px solid #4caf50";
+    validationInput.classList.add("valid");
+    validationInput.classList.remove("invalid");
   } else {
-    validationInput.style.border = "2px solid #f44336";
+    validationInput.classList.add("invalid");
+    validationInput.classList.remove("valid");
   }
 });
